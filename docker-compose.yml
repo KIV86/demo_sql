@@ -1,4 +1,16 @@
+#version: '3.1'
+#services:
+#  postgres:
+#    image: postgres:13
+#    environment:
+#      POSTGRES_USER: user
+#      POSTGRES_PASSWORD: password
+#      POSTGRES_DB: testdb
+#    ports:
+#      - "9999:5432"
+
 version: '3.1'
+
 services:
   postgres:
     image: postgres:13
@@ -8,3 +20,28 @@ services:
       POSTGRES_DB: testdb
     ports:
       - "9999:5432"
+
+  superset:
+    image: apache/superset
+    depends_on:
+      - postgres
+    environment:
+      # Superset specific env variables
+      SUPERSET_DB_URI: "postgresql+psycopg2://user:password@postgres/testdb"
+      SECRET_KEY: 'vrpndYv6PnTjl3E/cZz7NECZf8XNoX74qUn2aBtY7+C42HTugsbgN+wC'
+      SUPERSET_CONFIG_PATH: "/app/pythonpath/superset_config.py" # Указываем где искать конфиг
+      ADMIN_USERNAME: admin
+      ADMIN_FIRST_NAME: Admin
+      ADMIN_LAST_NAME: User
+      ADMIN_EMAIL: admin@example.com
+      ADMIN_PWD: admin
+      SUPERSET_LOAD_EXAMPLES: "yes"
+      SUPERSET_PORT: 8088
+    ports:
+      - "8088:8088"
+    volumes:
+      - ./superset_config.py:/app/pythonpath/superset_config.py # Монтируем конфиг в контейнер
+
+volumes:
+  postgres-data:
+  superset-data:
