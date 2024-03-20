@@ -10,3 +10,5 @@ superset fab create-admin \
 --lastname Admin \
 --email admin@superset.com \
 --password admin
+# Выйти из bash
+exit

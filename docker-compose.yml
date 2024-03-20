@@ -17,7 +17,7 @@ services:
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: testdb
+      POSTGRES_DB: demo
     ports:
       - "9999:5432"
 
@@ -27,7 +27,7 @@ services:
       - postgres
     environment:
       # Superset specific env variables
-      SUPERSET_DB_URI: "postgresql+psycopg2://user:password@postgres/testdb"
+      SUPERSET_DB_URI: "postgresql+psycopg2://user:password@postgres/demo"
       SECRET_KEY: 'vrpndYv6PnTjl3E/cZz7NECZf8XNoX74qUn2aBtY7+C42HTugsbgN+wC'
       SUPERSET_CONFIG_PATH: "/app/pythonpath/superset_config.py" # Указываем где искать конфиг
       ADMIN_USERNAME: admin

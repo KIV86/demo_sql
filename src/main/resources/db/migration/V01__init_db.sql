@@ -17,8 +17,8 @@ SET row_security = off;
 --
 -- Name: demo; Type: DATABASE; Schema: -; Owner: -
 --
-drop database if exists demo;
-CREATE DATABASE demo;
+--drop database if exists demo;
+--CREATE DATABASE demo;
 
 
 
