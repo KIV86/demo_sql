@@ -12,3 +12,6 @@ superset fab create-admin \
 --password admin
 # Выйти из bash
 exit
+######################################
+# Подключение БД к Суперсету 
+postgresql+psycopg2://test_user:password@host.docker.internal:9999/demo
